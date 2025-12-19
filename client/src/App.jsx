@@ -24,7 +24,8 @@ function App() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5050/api/github/${username}`
+        fetch(`https://devpulse-huvg.onrender.com/api/github/${username}`)
+
       );
       setData(res.data);
     } catch {
