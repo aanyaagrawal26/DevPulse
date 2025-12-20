@@ -17,23 +17,23 @@ function App() {
   }, []);
 
   const analyze = async () => {
-    if (!username) return;
-    setLoading(true);
-    setError("");
-    setData(null);
+  if (!username) return;
+  setLoading(true);
+  setError("");
+  setData(null);
 
-    try {
-      const res = await axios.get(
-        fetch(`https://devpulse-huvg.onrender.com/api/github/${username}`)
+  try {
+    const res = await axios.get(
+      `https://devpulse-huvg.onrender.com/api/github/${username}`
+    );
+    setData(res.data);
+  } catch {
+    setError("GitHub user not found ❌");
+  } finally {
+    setLoading(false);
+  }
+};
 
-      );
-      setData(res.data);
-    } catch {
-      setError("GitHub user not found ❌");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   /* 🧠 Hireability score */
   const hireability = data
